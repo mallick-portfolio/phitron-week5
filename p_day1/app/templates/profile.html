@@ -28,7 +28,7 @@
               <span class="text-primary mr-1"> #{{category}}</span>
             {% endfor %}
             </p>
-            <a href="#" class="btn btn-primary">Edit Post</a>
+            <a href="{% url 'edit-post' post.id %}" class="btn btn-warning">Edit Post</a>
             <a href="#" class="btn btn-primary">Delete Post</a>
           </div>
         </div>

@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from posts.forms import PostForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from posts.models import Post
 # Create your views here.
 @login_required
 def create_post(request):
@@ -18,6 +19,25 @@ def create_post(request):
   else:
     form = PostForm()
   return render(request, './posts/form.html', {"form": form, "title": "Post Page"})
+    
+    
+      
+@login_required
+def edit_post(request, id):
+  post = Post.objects.get(pk=id)
+  if request.method == "POST":
+    form = PostForm(request.POST, request.FILES, instance=post)
+    if form.is_valid():
+      form.instance.author = request.user
+      messages.success(request, "Post edit Successfully")
+      form.save(commit=True)
+      return redirect('profile')
+    else:
+      messages.error(request, "Failed to edit  post")
+      return redirect('profile')
+  else:
+    form = PostForm(instance=post)
+  return render(request, './posts/form.html', {"form": form, "title": "Edit Post Page"})
     
     
       

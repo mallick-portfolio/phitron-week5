@@ -4,6 +4,7 @@ from posts.models import Category, Post
 
 class CategoryAdmin(admin.ModelAdmin):
   prepopulated_fields = {"slug": ("name",)}
+  fields = ['name', 'slug']
   # readonly_fields = ['slug']
 
 

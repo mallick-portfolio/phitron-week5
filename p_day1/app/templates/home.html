@@ -6,6 +6,20 @@
 
 {% block content %}
 <div class="container">
-  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque iste placeat omnis repellendus a est vitae ducimus veniam amet! Enim in corporis veniam voluptas, sunt deleniti ratione numquam hic eos!
+  <div class="row">
+    {% for post in posts %}
+    <div class="col-md-4">
+      <div class="card" >
+        <img src="{{ post.image.url }}" class="card-img-top" alt="...">
+
+        <div class="card-body">
+          <h5 class="card-title">{{post.title}}</h5>
+          <p class="card-text">{{post.description}}</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
 </div>
 {% endblock content %}

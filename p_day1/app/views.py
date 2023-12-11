@@ -8,4 +8,10 @@ def home(request):
 
 @login_required
 def profile(request):
-  return render(request, './profile.html')
+  posts = Post.objects.filter(author=request.user)
+  print(posts)
+  return render(request, './profile.html', {"posts": posts})
+
+def post_details(request, id):
+  post = Post.objects.filter(id=id).first()
+  return render(request, './details.html', {"post": post})

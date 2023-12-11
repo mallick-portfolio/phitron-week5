@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from account.forms import RegisterForm
+from account.forms import RegisterForm, ProfileChangeForm
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm,SetPasswordForm
 from django.contrib.auth import login, logout, authenticate, update_session_auth_hash
@@ -65,6 +65,19 @@ def change_password_without_old_password(request):
   else:
     form = SetPasswordForm(user=request.user)
   return render(request, './account/form.html', {"form": form, "title": "Password change page"})
+
+
+@login_required
+def change_profile(request):
+  if request.method == "POST":
+    form = ProfileChangeForm(request.POST, instance=request.user)
+    if form.is_valid():
+      messages.success(request,"Profile update successfully!!!")
+      form.save()
+      return redirect('profile')
+  else:
+    form = ProfileChangeForm(instance=request.user)
+  return render(request, './account/form.html', {"form": form, "title": "Profile update"})
 
       
 def logout_user(request):

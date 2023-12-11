@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+  Profile Page
+{% endblock title %}
+
+{% block content %}
+<div class="container">
+  <div >
+    <a href="{% url 'change-password' %}" class="btn btn-primary">Change Password</a>
+    <a href="{% url 'change-password2' %}" class="btn btn-primary">Change Password 2</a>
+  </div>
+  <div>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque iste placeat omnis repellendus a est vitae ducimus veniam amet! Enim in corporis veniam voluptas, sunt deleniti ratione numquam hic eos!</div>
+</div>
+{% endblock content %}

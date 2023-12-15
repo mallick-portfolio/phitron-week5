@@ -9,13 +9,11 @@
   <div class="flex gap-3">
     <a href="{% url 'change-password' %}" class="btn btn-primary">Change Password</a>
     <a href="{% url 'change-password2' %}" class="btn btn-success">Change Password 2</a>
-    <a href="{% url 'create-post' %}" class="btn btn-warning">Create post</a>
-    <a href="{% url 'create-post' %}" class="btn btn-warning">My post</a>
     <a href="{% url 'change_profile' %}" class="btn btn-danger">Change Profile</a>
   </div>
   <div class="container my-5">
     <div class="row">
-      {% for post in posts %}
+      {% comment %} {% for post in posts %}
       <div class="col-md-4">
         <div class="card" >
           <img src="{{ post.image.url }}" class="card-img-top" alt="...">
@@ -33,7 +31,7 @@
           </div>
         </div>
       </div>
-      {% endfor %}
+      {% endfor %} {% endcomment %}
     </div>
   </div>
 </div>

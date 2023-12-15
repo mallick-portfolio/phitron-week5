@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+  Home Page
+{% endblock title %}
+
+{% block content %}
+<div class="container">
+  <div class="row align-items-center">
+    <div class="col-md-6 px-4">
+      <h1>Our car is ...</h1>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laborum a atque nam debitis vero, sunt dicta earum reprehenderit est veritatis maxime iure, quos eligendi harum mollitia similique accusantium numquam aperiam.
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia voluptate, veniam non possimus magni debitis iste laboriosam molestiae ex sed et error ipsa provident a reiciendis modi aperiam unde eius.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste expedita incidunt velit totam magnam nisi illum officiis at. Nesciunt provident pariatur distinctio possimus veritatis rerum expedita sequi perspiciatis doloremque molestias?</p>
+    </div>
+    <div class="col-md-6 px-4">
+      <img src="{% static './car.avif' %}" alt="">
+    </div>
+  </div>
+</div>
+<div class="container my-3">
+  <div class="flex">
+    {% for brand in brands %}
+          <a href="{% url 'brand_name' brand.name %}" class="btn btn-primary">{{brand.name}}</a>
+    {% endfor %}
+  </div>
+</div>
+<div class="container my-5">
+  <div class="row">
+    {% for car in cars %}
+    <div class="col-md-4">
+      <div class="card" >
+        <img src="{{ car.image.url }}" class="card-img-top" alt="...">
+
+        <div class="card-body">
+          <h5 class="card-title">{{car.title}}</h5>
+          <p class="card-text">{{car.description|truncatewords:20}}</p>
+          <p class="card-text">${{car.price}}</p>
+          {% comment %} <p>
+            {% for category in post.category.all %}
+            <span class="text-primary mr-1"> #{{category}}</span>
+          {% endfor %}
+          </p> {% endcomment %}
+          {% comment %} <a href="{% url 'post_details' post.id %}" class="btn btn-primary">View Details</a> {% endcomment %}
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock content %}

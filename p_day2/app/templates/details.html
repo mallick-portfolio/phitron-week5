@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+  Home Page
+{% endblock title %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card" >
+        <img src="{{ post.image.url }}" class="card-img-top" alt="...">
+
+        <div class="card-body">
+          <h5 class="card-title">{{post.title}}</h5>
+          <p class="card-text">{{post.description}}</p>
+          <p>
+            {% for category in post.category.all %}
+            <span class="text-primary mr-1"> #{{category}}</span>
+          {% endfor %}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

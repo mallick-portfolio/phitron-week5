@@ -19,4 +19,9 @@ class Car(models.Model):
 class Order(models.Model):
   user = models.ForeignKey(User, on_delete=models.CASCADE,related_name="users")
   car = models.ForeignKey(Car, on_delete=models.CASCADE, related_name="cars")
+
+class Comment(models.Model):
+  car = models.ForeignKey(Car, on_delete=models.CASCADE)
+  name = models.CharField(max_length=50)
+  comment = models.TextField(null=True, blank=True)
   

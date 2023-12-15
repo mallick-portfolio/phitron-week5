@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from car.models import Car, Brand
+from car.models import Car, Brand, Order
 # Create your views here.
 def home(request, brand_name = None):
   brands = Brand.objects.all()
@@ -12,6 +12,6 @@ def home(request, brand_name = None):
 
 @login_required
 def profile(request):
-  
-  return render(request, './profile.html',)
+  orders = Order.objects.filter(user=request.user)
+  return render(request, './profile.html',{"orders": orders})
 

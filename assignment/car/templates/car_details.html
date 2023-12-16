@@ -4,7 +4,6 @@
 {% load crispy_forms_tags %}
 {% block content %}
 <div class="container mx-auto my-5">
- 
     <img src="{% static './car.avif' %}" alt="" />
     <h1>{{car.title}}</h1>
     <h3>Quantity: {{car.quantity}}</h3>
@@ -14,6 +13,19 @@
   {% if request.user.is_authenticated  %}
   <button class="btn btn-primary"><a class="text-white text-decoration-none" href="{% url 'buy_car' car.id %}">Buy now</a></button>
   {% endif %}
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      {% for comment in comments %}
+      <div class="card my-2">
+        <div class="card-body">
+          {{comment.comment}}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
 </div>
 <div class="container py-5">
   <div class="row">

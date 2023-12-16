@@ -19,6 +19,7 @@
   </div>
 </div>
 <div class="container my-3">
+  <h2>Filter by brand</h2>
   <div class="flex">
     {% for brand in brands %}
           <a href="{% url 'brand_name' brand.name %}" class="btn btn-primary">{{brand.name}}</a>
@@ -26,6 +27,8 @@
   </div>
 </div>
 <div class="container my-5">
+  <h2 class="my-2">Total car found :  {{cars | length}}</h2>
+
   <div class="row">
     {% for car in cars %}
     <div class="col-md-4">

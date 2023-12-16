@@ -31,7 +31,6 @@ INSTALLED_APPS = [
     'app',
     'crispy_forms',
     'crispy_bootstrap5',
-    'posts',
     'car'
    
 
